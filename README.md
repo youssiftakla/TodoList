@@ -1,10 +1,10 @@
 # To Do List
 
-In our increasingly complex and ever-evolving business landscape demand is constantly growing for simple, intuitive, and lightly space-themed task management software. 
+In our increasingly complex and ever-evolving business landscape demand is constantly growing for simple, intuitive, and lightly space-themed task management software.
 
 Are you tired of your current To Do List solutions letting you down during crucial moments? Well, look no further than the To Do List app!
 
-Now, every rose has its thorns and the To Do List app is no different. 
+Now, every rose has its thorns and the To Do List app is no different.
 
 Early user testing has indicated that the app is riddled with bugs and borderline unusable... This is where you come in!
 

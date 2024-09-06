@@ -16,7 +16,7 @@ interface TodoItemProps {
 // each item in the list has to have key
 function TodoItem({ todo, deleteTodo, toggleComplete, toggleUrgent }: TodoItemProps) {
     return (
-        <li key={todo.id} 
+        <li key={todo.id}
         className={todo.isCompleted
             ? "todo-item-complete"
             : todo.isUrgent
@@ -27,15 +27,16 @@ function TodoItem({ todo, deleteTodo, toggleComplete, toggleUrgent }: TodoItemPr
             <h3>{todo.title}</h3>
             <p>{todo.description}</p>
             <div className="todo-buttons"  key={todo.id}>
-                <button onClick={() => toggleComplete(todo.id)}>
+                <button id={`${todo.id}-Complete`} onClick={() => toggleComplete(todo.id)}>
                     {todo.isCompleted ? 'Mark as Incomplete' : 'Mark as Complete'}
                 </button>
-                <button onClick={() => toggleUrgent(todo.id)}>
+                <button id={`${todo.id}-Urgent`} onClick={() => toggleUrgent(todo.id)}>
                     {todo.isUrgent ? 'Mark as not Urgent' : 'Mark as Urgent'}
                 </button>
-                {!todo.isCompleted && <button onClick={() => deleteTodo(todo.id)}>Delete</button>}
+                {!todo.isCompleted && <button id={`${todo.id}-Delete`} onClick={() => deleteTodo(todo.id)}>Delete</button>}
             </div>
         </li>
+      
     );
 }
 

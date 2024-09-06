@@ -24,7 +24,7 @@ import sampleData from "@/sampleData.json";
 export default function Home() {
 const [todos, setTodos] = useState<Todo[]>(sampleData);
 
-   const [loading, setLoding] = useState(true);
+   const [count, setCount] = useState( todos.length);
 
    
 
@@ -39,7 +39,11 @@ const [todos, setTodos] = useState<Todo[]>(sampleData);
 
     todos.push(newTodo);
     setTodos(todos);
+    setCount(todos.length + 1);
   };
+  useEffect(() => {
+    console.log("add new item");
+  }, [count]);
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
