@@ -2,9 +2,9 @@ import Head from "next/head";
 import React, { useCallback, useState, useEffect } from "react";
 import { Todo } from "@/types/todo";
 import AddTodoForm from "@/components/AddTodoForm"
+import AddSelectToForm from "@/components/AddSelectToForm"
 import TodoList from "@/components/TodoList";
 import Banner from "@/components/Banner";
-import axios from "axios";
 import sampleData from "@/sampleData.json";
 
 /*
@@ -25,7 +25,7 @@ export default function Home() {
 const [todos, setTodos] = useState<Todo[]>(sampleData);
 
    const [count, setCount] = useState( todos.length);
-
+   const [status, setStatus] = useState('incomplete'); // Status input
    
 
   const AddTodo = (title: string, desc: string) => {
@@ -43,7 +43,7 @@ const [todos, setTodos] = useState<Todo[]>(sampleData);
   };
   useEffect(() => {
     console.log("add new item");
-  }, [count]);
+  }, [count,status]);
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -75,7 +75,15 @@ const [todos, setTodos] = useState<Todo[]>(sampleData);
   const displaNotComplete = () => {
     return displayTodoList(todos.filter((x) => !x.isCompleted ));
   };
-
+  const displayComplete = () => {
+    return displayTodoList(todos.filter((x) => x.isCompleted));
+  };
+  const displayList = (status : string) => {
+    if (status==="incomplete") 
+      return displayTodoList(todos.filter((x) => !x.isCompleted ));
+    else
+    return displayTodoList(todos.filter((x) => x.isCompleted));
+  };
   return (
     <>
       <Head>
@@ -88,7 +96,11 @@ const [todos, setTodos] = useState<Todo[]>(sampleData);
       <div className="Home">
         <Banner />
         <AddTodoForm addTodo={AddTodo}/>
-        {displaNotComplete()}
+        <AddSelectToForm  status={status} setStatus={setStatus}/>
+        {displayList(status)}
+       
+      
+       
       </div>
     </>
   );
